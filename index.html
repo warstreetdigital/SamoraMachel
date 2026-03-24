@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samora Machel Ave | Golden Hour | Long Live Harare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #080808;
+            color: #F5F5F5;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Golden Hour Glows */
+        .sun-glow {
+            position: fixed;
+            top: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, rgba(245, 158, 11, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .section-glow {
+            background: radial-gradient(circle at top left, rgba(245, 158, 11, 0.03) 0%, transparent 50%);
+        }
+
+        .font-black { font-weight: 900; }
+        .tracking-tighter { letter-spacing: -0.05em; }
+        .tracking-widest { letter-spacing: 0.1em; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #080808; }
+        ::-webkit-scrollbar-thumb { background: #F59E0B; border-radius: 10px; }
+
+        .gold-border { border: 1px solid rgba(245, 158, 11, 0.15); }
+        .gold-text { color: #F59E0B; }
+        .gold-bg { background-color: #F59E0B; }
+    </style>
+</head>
+<body class="min-h-screen selection:bg-amber-500 selection:text-black">
+
+    <div class="sun-glow"></div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-[#080808]/90 backdrop-blur-xl border-b border-amber-500/10 px-6 py-6 flex justify-between items-start">
+        <div class="relative z-10">
+            <button onclick="window.location.href='/'" class="group flex items-center gap-4 mb-6">
+                <div class="relative w-10 h-10 flex items-center justify-center">
+                    <div class="absolute inset-0 border border-amber-500/20 rounded-full group-hover:scale-110 group-hover:border-amber-500/50 transition-all duration-500"></div>
+                    <i data-lucide="chevron-left" class="w-4 h-4 text-amber-500 group-hover:-translate-x-1 transition-transform"></i>
+                </div>
+                <div class="flex flex-col items-start">
+                    <span class="text-[9px] uppercase tracking-[0.4em] text-amber-500/60 font-bold group-hover:text-amber-500 transition-colors">Back to City</span>
+                    <span class="text-[11px] uppercase tracking-[0.2em] font-black">The City</span>
+                </div>
+            </button>
+            <h1 class="text-4xl font-black uppercase tracking-tighter leading-none">SAMORA MACHEL AVE</h1>
+            <p class="text-[10px] uppercase tracking-[0.3em] gold-text font-bold mt-2">Sound • Energy • Nightlife</p>
+        </div>
+    </header>
+
+    <main class="relative z-10 px-6 py-12 max-w-2xl mx-auto space-y-20">
+        
+        <!-- Section 1: Street Radio -->
+        <section class="space-y-8">
+            <div class="flex justify-between items-end border-b border-amber-500/10 pb-4">
+                <h2 class="text-xs font-black uppercase tracking-[0.3em] text-amber-500/80">01 // THE PULSE</h2>
+                <span class="text-[9px] uppercase tracking-widest text-gray-600 font-bold">Live Broadcast</span>
+            </div>
+            
+            <div class="p-10 rounded-[2.5rem] bg-gradient-to-br from-white/5 to-amber-500/5 gold-border flex flex-col items-center text-center gap-6 shadow-2xl shadow-amber-500/5">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-amber-500/20 blur-2xl rounded-full"></div>
+                    <div class="relative w-24 h-24 rounded-full bg-amber-500 flex items-center justify-center text-black shadow-xl">
+                        <button id="play-samora_radio" onclick="toggleTrack('samora_radio', '/samora_radio.mp3')" class="hover:scale-110 transition-transform active:scale-95">
+                            <i data-lucide="play" class="w-8 h-8 fill-current"></i>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-2xl font-black uppercase tracking-tighter">STREET RADIO</h4>
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-bold mt-2">The Sound of the City</p>
+                    <div class="flex items-center justify-center gap-2 mt-4">
+                        <span class="w-1.5 h-1.5 rounded-full gold-bg animate-pulse"></span>
+                        <span id="status-samora_radio" class="text-[9px] uppercase tracking-widest text-amber-500 font-black">Paused</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Featured Artist -->
+        <section class="space-y-8">
+            <div class="flex justify-between items-end border-b border-amber-500/10 pb-4">
+                <h2 class="text-xs font-black uppercase tracking-[0.3em] text-amber-500/80">02 // THE SPOTLIGHT</h2>
+                <span class="text-[9px] uppercase tracking-widest text-gray-600 font-bold">Artist Feature</span>
+            </div>
+
+            <div class="relative aspect-[4/5] sm:aspect-[16/9] rounded-[3rem] overflow-hidden gold-border group">
+                <img src="/rayblackCover.jpg" alt="RAYBLACK.he.is" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" referrerPolicy="no-referrer">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                
+                <div class="absolute bottom-10 left-10 right-10">
+                    <div class="space-y-4">
+                        <div class="space-y-1">
+                            <span class="text-[9px] uppercase tracking-[0.4em] text-amber-500 font-black">Featured Talent</span>
+                            <h3 class="text-4xl font-black uppercase tracking-tighter">RAYBLACK.he.is</h3>
+                            <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Harare-based artist // "Silent Wins"</p>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-4 pt-4">
+                            <button id="play-silent_wins" onclick="toggleTrack('silent_wins', '/SilentWins.mp3')" class="px-10 py-4 gold-bg text-black text-[10px] font-black uppercase tracking-widest rounded-full hover:scale-105 transition-all shadow-lg shadow-amber-500/20">
+                                PLAY TRACK
+                            </button>
+                            <a href="https://youtube.com/@warstreet_studios?si=4x73JsepvcOIJRoc" target="_blank" rel="noopener noreferrer" class="px-10 py-4 border border-white/20 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-white/10 transition-all">
+                                FOLLOW
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Playlist -->
+        <section class="space-y-8">
+            <div class="flex justify-between items-end border-b border-amber-500/10 pb-4">
+                <h2 class="text-xs font-black uppercase tracking-[0.3em] text-amber-500/80">03 // THE ARCHIVE</h2>
+                <div class="text-right">
+                    <p class="text-[11px] font-black uppercase tracking-tighter">Harare After 6</p>
+                    <p class="text-[8px] uppercase tracking-widest text-gray-600 font-bold">Curated Selection</p>
+                </div>
+            </div>
+
+            <div id="playlist-container" class="space-y-3">
+                <!-- Tracks will be injected here -->
+            </div>
+        </section>
+
+        <!-- Section 4: Events -->
+        <section class="space-y-8">
+            <div class="flex justify-between items-end border-b border-amber-500/10 pb-4">
+                <h2 class="text-xs font-black uppercase tracking-[0.3em] text-amber-500/80">04 // THE CALENDAR</h2>
+                <span class="text-[9px] uppercase tracking-widest text-gray-600 font-bold">Upcoming</span>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4">
+                <div class="group p-8 rounded-[2.5rem] gold-border bg-white/5 hover:bg-amber-500/[0.03] transition-all flex justify-between items-center">
+                    <div>
+                        <h4 class="text-xl font-black uppercase tracking-tight group-hover:text-amber-500 transition-colors">HairVault Launch</h4>
+                        <p class="text-[9px] uppercase tracking-widest text-gray-500 font-bold mt-1">Date TBA // Exclusive Access</p>
+                    </div>
+                    <button onclick="trackEvent('event_click', 'HairVault Launch')" class="text-[9px] font-black uppercase tracking-widest border border-amber-500/20 px-8 py-3 rounded-full hover:bg-amber-500 hover:text-black transition-all">VIEW</button>
+                </div>
+
+                <div class="group p-8 rounded-[2.5rem] gold-border bg-white/5 hover:bg-amber-500/[0.03] transition-all flex justify-between items-center">
+                    <div>
+                        <h4 class="text-xl font-black uppercase tracking-tight group-hover:text-amber-500 transition-colors">Big Brother UZ</h4>
+                        <p class="text-[9px] uppercase tracking-widest text-gray-500 font-bold mt-1">TBA // Season 01</p>
+                    </div>
+                    <button onclick="trackEvent('event_click', 'Big Brother UZ')" class="text-[9px] font-black uppercase tracking-widest border border-amber-500/20 px-8 py-3 rounded-full hover:bg-amber-500 hover:text-black transition-all">VIEW</button>
+                </div>
+
+                <div class="group p-8 rounded-[2.5rem] gold-border bg-white/5 hover:bg-amber-500/[0.03] transition-all flex justify-between items-center">
+                    <div>
+                        <h4 class="text-xl font-black uppercase tracking-tight group-hover:text-amber-500 transition-colors">Shoko Festival</h4>
+                        <p class="text-[9px] uppercase tracking-widest text-gray-500 font-bold mt-1">TBA // City Takeover</p>
+                    </div>
+                    <button onclick="trackEvent('event_click', 'Shoko Festival')" class="text-[9px] font-black uppercase tracking-widest border border-amber-500/20 px-8 py-3 rounded-full hover:bg-amber-500 hover:text-black transition-all">VIEW</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="px-6 py-24 border-t border-amber-500/10 text-center relative z-10">
+        <div class="mb-8 flex justify-center gap-8 opacity-30">
+            <div class="w-1 h-1 rounded-full gold-bg"></div>
+            <div class="w-1 h-1 rounded-full gold-bg"></div>
+            <div class="w-1 h-1 rounded-full gold-bg"></div>
+        </div>
+        <p class="text-[10px] uppercase tracking-[0.4em] text-gray-600 font-black">© 2026 LONG LIVE HARARE // SAMORA MACHEL AVE</p>
+    </footer>
+
+    <!-- Audio Element -->
+    <audio id="main-audio"></audio>
+
+    <script>
+        // State
+        let currentTrackId = null;
+        let isPlaying = false;
+
+        const tracks = [
+            { id: 'LongLiveHarare', title: "Long Live Harare", src: "/LongLiveHarare.mp3" },
+            { id: 'SekeRoadVibes', title: "Seke Road Vibes", src: "/SekeRoadVibes.mp3" },
+            { id: 'SweetJoinaCitySpot', title: "Sweet Joina City Spot", src: "/SweetJoinaCitySpot.mp3" },
+            { id: 'FirstDayOut', title: "First Day Out", src: "/FirstDayOut.mp3" },
+            { id: 'EvitroDaySpark', title: "Evitro Day Spark", src: "/EvitroDaySpark.mp3" }
+        ];
+
+        function trackEvent(eventName, value) {
+            console.log(`[Tracking] Event: ${eventName}${value ? `, Value: ${value}` : ''}`);
+        }
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Render Playlist
+        const playlistContainer = document.getElementById('playlist-container');
+        tracks.forEach((track, index) => {
+            const trackEl = document.createElement('div');
+            trackEl.className = 'group flex items-center justify-between p-6 rounded-3xl bg-white/[0.02] gold-border hover:bg-amber-500/[0.05] transition-all cursor-pointer';
+            trackEl.onclick = () => toggleTrack(track.id, track.src, track.title);
+            trackEl.innerHTML = `
+                <div class="flex items-center gap-6">
+                    <div class="text-[9px] font-black text-amber-500/40 group-hover:text-amber-500 transition-colors">0${index + 1}</div>
+                    <button id="play-${track.id}" class="text-gray-600 group-hover:text-amber-500 transition-colors">
+                        <i data-lucide="play" class="w-4 h-4 fill-current"></i>
+                    </button>
+                    <div>
+                        <h4 class="text-sm font-black uppercase tracking-tight group-hover:translate-x-1 transition-transform">${track.title}</h4>
+                    </div>
+                </div>
+                <div class="w-1 h-1 rounded-full bg-white/10 group-hover:bg-amber-500 transition-colors"></div>
+            `;
+            playlistContainer.appendChild(trackEl);
+        });
+
+        // Audio Logic
+        const audio = document.getElementById('main-audio');
+
+        function toggleTrack(trackId, src, trackingName) {
+            if (currentTrackId === trackId) {
+                if (isPlaying) {
+                    audio.pause();
+                    isPlaying = false;
+                    updateUI(trackId, 'play', 'Paused');
+                } else {
+                    audio.play();
+                    isPlaying = true;
+                    updateUI(trackId, 'pause', 'Playing');
+                }
+            } else {
+                // Stop previous
+                if (currentTrackId) {
+                    updateUI(currentTrackId, 'play', 'Paused');
+                }
+                
+                audio.src = src;
+                audio.play();
+                currentTrackId = trackId;
+                isPlaying = true;
+                updateUI(trackId, 'pause', 'Playing');
+                
+                // Tracking
+                if (trackId === 'samora_radio') {
+                    trackEvent("play_audio", "samora_radio");
+                } else if (trackId === 'silent_wins') {
+                    trackEvent("play_audio", "silent_wins");
+                } else {
+                    trackEvent("play_audio", trackingName || trackId);
+                }
+            }
+            
+            lucide.createIcons();
+        }
+
+        function updateUI(trackId, type, statusText) {
+            const btn = document.getElementById(`play-${trackId}`);
+            if (btn) {
+                if (trackId === 'silent_wins') {
+                    btn.innerText = type === 'pause' ? 'PAUSE' : 'PLAY TRACK';
+                } else {
+                    const iconSize = trackId === 'samora_radio' ? 'w-8 h-8' : 'w-4 h-4';
+                    btn.innerHTML = `<i data-lucide="${type}" class="${iconSize} fill-current"></i>`;
+                }
+            }
+            
+            const status = document.getElementById(`status-${trackId}`);
+            if (status) {
+                status.innerText = statusText;
+            }
+        }
+
+        audio.onended = () => {
+            if (currentTrackId) {
+                updateUI(currentTrackId, 'play', 'Paused');
+                lucide.createIcons();
+            }
+            isPlaying = false;
+            currentTrackId = null;
+        };
+    </script>
+</body>
+</html>
