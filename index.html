@@ -30,10 +30,6 @@
             z-index: 0;
         }
 
-        .section-glow {
-            background: radial-gradient(circle at top left, rgba(245, 158, 11, 0.03) 0%, transparent 50%);
-        }
-
         .font-black { font-weight: 900; }
         .tracking-tighter { letter-spacing: -0.05em; }
         .tracking-widest { letter-spacing: 0.1em; }
@@ -83,7 +79,7 @@
                 <div class="relative">
                     <div class="absolute inset-0 bg-amber-500/20 blur-2xl rounded-full"></div>
                     <div class="relative w-24 h-24 rounded-full bg-amber-500 flex items-center justify-center text-black shadow-xl">
-                        <button id="play-samora_radio" onclick="toggleTrack('samora_radio', '/samora_radio.mp3')" class="hover:scale-110 transition-transform active:scale-95">
+                        <button id="play-samora_radio" onclick="toggleTrack('samora_radio', '/samora_radio.mp3', 'STREET RADIO')" class="hover:scale-110 transition-transform active:scale-95">
                             <i data-lucide="play" class="w-8 h-8 fill-current"></i>
                         </button>
                     </div>
@@ -107,7 +103,7 @@
             </div>
 
             <div class="relative aspect-[4/5] sm:aspect-[16/9] rounded-[3rem] overflow-hidden gold-border group">
-                <img src="/rayblackCover.jpg" alt="RAYBLACK.he.is" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" referrerPolicy="no-referrer">
+                <img src="/rayblack_cover.jpg" alt="RAYBLACK.he.is" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100">
                 <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
                 
                 <div class="absolute bottom-10 left-10 right-10">
@@ -115,14 +111,14 @@
                         <div class="space-y-1">
                             <span class="text-[9px] uppercase tracking-[0.4em] text-amber-500 font-black">Featured Talent</span>
                             <h3 class="text-4xl font-black uppercase tracking-tighter">RAYBLACK.he.is</h3>
-                            <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Harare-based artist // "Silent Wins"</p>
+                            <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Long Live Harare // Featured Track</p>
                         </div>
                         
                         <div class="flex flex-wrap gap-4 pt-4">
-                            <button id="play-silent_wins" onclick="toggleTrack('silent_wins', '/SilentWins.mp3')" class="px-10 py-4 gold-bg text-black text-[10px] font-black uppercase tracking-widest rounded-full hover:scale-105 transition-all shadow-lg shadow-amber-500/20">
+                            <button id="play-featured_track" onclick="toggleTrack('featured_track', '/longliveharare.mp3', 'Long Live Harare')" class="px-10 py-4 gold-bg text-black text-[10px] font-black uppercase tracking-widest rounded-full hover:scale-105 transition-all shadow-lg shadow-amber-500/20">
                                 PLAY TRACK
                             </button>
-                            <a href="https://youtube.com/@warstreet_studios?si=4x73JsepvcOIJRoc" target="_blank" rel="noopener noreferrer" class="px-10 py-4 border border-white/20 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-white/10 transition-all">
+                            <a href="https://youtube.com/@warstreet_studios?si=4x73JsepvcOIJRoc" onclick="trackEvent('artist_follow', 'rayblack')" target="_blank" rel="noopener noreferrer" class="px-10 py-4 border border-white/20 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-white/10 transition-all">
                                 FOLLOW
                             </a>
                         </div>
@@ -141,6 +137,8 @@
                 </div>
             </div>
 
+            <p class="text-[9px] uppercase tracking-[0.3em] text-gray-500 font-bold text-center">Tap any track to play</p>
+
             <div id="playlist-container" class="space-y-3">
                 <!-- Tracks will be injected here -->
             </div>
@@ -154,28 +152,43 @@
             </div>
 
             <div class="grid grid-cols-1 gap-4">
+                <!-- Event 1 -->
                 <div class="group p-8 rounded-[2.5rem] gold-border bg-white/5 hover:bg-amber-500/[0.03] transition-all flex justify-between items-center">
-                    <div>
-                        <h4 class="text-xl font-black uppercase tracking-tight group-hover:text-amber-500 transition-colors">HairVault Launch</h4>
-                        <p class="text-[9px] uppercase tracking-widest text-gray-500 font-bold mt-1">Date TBA // Exclusive Access</p>
+                    <div class="space-y-1">
+                        <h4 class="text-xl font-black uppercase tracking-tight group-hover:text-amber-500 transition-colors">LLH — MERCH RELEASE</h4>
+                        <div class="space-y-0.5">
+                            <p class="text-[9px] uppercase tracking-widest text-gray-500 font-bold">Status: Incoming</p>
+                            <p class="text-[9px] uppercase tracking-widest text-gray-500 font-bold">Location: TBA (Harare)</p>
+                            <p class="text-[9px] uppercase tracking-widest text-gray-500 font-bold">Time: June 2026 // Public Drop</p>
+                        </div>
                     </div>
-                    <button onclick="trackEvent('event_click', 'HairVault Launch')" class="text-[9px] font-black uppercase tracking-widest border border-amber-500/20 px-8 py-3 rounded-full hover:bg-amber-500 hover:text-black transition-all">VIEW</button>
+                    <button onclick="trackEvent('event_click', 'LLH Merch Release')" class="text-[9px] font-black uppercase tracking-widest border border-amber-500/20 px-8 py-3 rounded-full hover:bg-amber-500 hover:text-black transition-all">VIEW</button>
                 </div>
 
+                <!-- Event 2 -->
                 <div class="group p-8 rounded-[2.5rem] gold-border bg-white/5 hover:bg-amber-500/[0.03] transition-all flex justify-between items-center">
-                    <div>
-                        <h4 class="text-xl font-black uppercase tracking-tight group-hover:text-amber-500 transition-colors">Big Brother UZ</h4>
-                        <p class="text-[9px] uppercase tracking-widest text-gray-500 font-bold mt-1">TBA // Season 01</p>
+                    <div class="space-y-1">
+                        <h4 class="text-xl font-black uppercase tracking-tight group-hover:text-amber-500 transition-colors">HIFA 2026</h4>
+                        <div class="space-y-0.5">
+                            <p class="text-[9px] uppercase tracking-widest text-gray-500 font-bold">Status: Confirmed</p>
+                            <p class="text-[9px] uppercase tracking-widest text-gray-500 font-bold">Location: Multiple Venues (Harare)</p>
+                            <p class="text-[9px] uppercase tracking-widest text-gray-500 font-bold">Type: Cultural Festival</p>
+                        </div>
                     </div>
-                    <button onclick="trackEvent('event_click', 'Big Brother UZ')" class="text-[9px] font-black uppercase tracking-widest border border-amber-500/20 px-8 py-3 rounded-full hover:bg-amber-500 hover:text-black transition-all">VIEW</button>
+                    <button onclick="trackEvent('event_click', 'HIFA 2026')" class="text-[9px] font-black uppercase tracking-widest border border-amber-500/20 px-8 py-3 rounded-full hover:bg-amber-500 hover:text-black transition-all">VIEW</button>
                 </div>
 
+                <!-- Event 3 -->
                 <div class="group p-8 rounded-[2.5rem] gold-border bg-white/5 hover:bg-amber-500/[0.03] transition-all flex justify-between items-center">
-                    <div>
-                        <h4 class="text-xl font-black uppercase tracking-tight group-hover:text-amber-500 transition-colors">Shoko Festival</h4>
-                        <p class="text-[9px] uppercase tracking-widest text-gray-500 font-bold mt-1">TBA // City Takeover</p>
+                    <div class="space-y-1">
+                        <h4 class="text-xl font-black uppercase tracking-tight group-hover:text-amber-500 transition-colors">UNPLUGGED SESSIONS</h4>
+                        <div class="space-y-0.5">
+                            <p class="text-[9px] uppercase tracking-widest text-gray-500 font-bold">Status: Active</p>
+                            <p class="text-[9px] uppercase tracking-widest text-gray-500 font-bold">Location: Select Venues (Harare)</p>
+                            <p class="text-[9px] uppercase tracking-widest text-gray-500 font-bold">Type: Live Acoustic Performances</p>
+                        </div>
                     </div>
-                    <button onclick="trackEvent('event_click', 'Shoko Festival')" class="text-[9px] font-black uppercase tracking-widest border border-amber-500/20 px-8 py-3 rounded-full hover:bg-amber-500 hover:text-black transition-all">VIEW</button>
+                    <button onclick="trackEvent('event_click', 'Unplugged Sessions')" class="text-[9px] font-black uppercase tracking-widest border border-amber-500/20 px-8 py-3 rounded-full hover:bg-amber-500 hover:text-black transition-all">VIEW</button>
                 </div>
             </div>
         </section>
@@ -200,11 +213,11 @@
         let isPlaying = false;
 
         const tracks = [
-            { id: 'LongLiveHarare', title: "Long Live Harare", src: "/LongLiveHarare.mp3" },
-            { id: 'SekeRoadVibes', title: "Seke Road Vibes", src: "/SekeRoadVibes.mp3" },
-            { id: 'SweetJoinaCitySpot', title: "Sweet Joina City Spot", src: "/SweetJoinaCitySpot.mp3" },
-            { id: 'FirstDayOut', title: "First Day Out", src: "/FirstDayOut.mp3" },
-            { id: 'EvitroDaySpark', title: "Evitro Day Spark", src: "/EvitroDaySpark.mp3" }
+            { id: 'paineaze', title: "Pain Eaze", artist: "Rayblack.he.is ft Aaliyah", src: "/paineaze.mp3" },
+            { id: 'sekeroadvibes', title: "Seke Road Vibes", artist: "Warstreet Band", src: "/sekeroadvibes.mp3" },
+            { id: 'firstdayout', title: "First Day Out", artist: "Rayblack.he.is", src: "/firstdayout.mp3" },
+            { id: 'sweetjoinacityspot', title: "Sweet Joina City Spot", artist: "Warstreet Band", src: "/sweetjoinacityspot.mp3" },
+            { id: 'evitrodayspark', title: "Evitro Day Spark", artist: "Warstreet Band", src: "/evitrodayspark.mp3" }
         ];
 
         function trackEvent(eventName, value) {
@@ -228,6 +241,7 @@
                     </button>
                     <div>
                         <h4 class="text-sm font-black uppercase tracking-tight group-hover:translate-x-1 transition-transform">${track.title}</h4>
+                        <p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold">${track.artist}</p>
                     </div>
                 </div>
                 <div class="w-1 h-1 rounded-full bg-white/10 group-hover:bg-amber-500 transition-colors"></div>
@@ -261,13 +275,13 @@
                 isPlaying = true;
                 updateUI(trackId, 'pause', 'Playing');
                 
-                // Tracking
+                // Unified Tracking System
                 if (trackId === 'samora_radio') {
-                    trackEvent("play_audio", "samora_radio");
-                } else if (trackId === 'silent_wins') {
-                    trackEvent("play_audio", "silent_wins");
+                    trackEvent("radio_play", "samora_radio");
+                } else if (trackId === 'featured_track') {
+                    trackEvent("featured_play", "longliveharare");
                 } else {
-                    trackEvent("play_audio", trackingName || trackId);
+                    trackEvent("playlist_play", trackingName || trackId);
                 }
             }
             
@@ -277,7 +291,7 @@
         function updateUI(trackId, type, statusText) {
             const btn = document.getElementById(`play-${trackId}`);
             if (btn) {
-                if (trackId === 'silent_wins') {
+                if (trackId === 'featured_track') {
                     btn.innerText = type === 'pause' ? 'PAUSE' : 'PLAY TRACK';
                 } else {
                     const iconSize = trackId === 'samora_radio' ? 'w-8 h-8' : 'w-4 h-4';
